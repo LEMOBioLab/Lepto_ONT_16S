@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ----------------------------------------
 Pipeline for adapter trimming, quality filtering, and read length selection using:
 - Porechop (adapter trimming)
@@ -31,7 +30,7 @@ echo "Trimming adapters with Porechop..."
 porechop -i "$file" --check_reads 1000 -v 1 -o "$trimmed_file"
 
 # Step 2: Quality and length filtering with fastp
-filtered_file="${FINAL_CLEAN_DIR}/${base}.cl15.fastq"
+filtered_file="${FINAL_CLEAN_DIR}/${base}.cl.fastq"
 echo "Filtering with fastp (Q ≥ 15, length 1400–1600)..."
 fastp -i "$trimmed_file" -A -G -q 15 -l 1400 --length_limit 1600 -w $THREADS -o "$filtered_file"
 
