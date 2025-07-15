@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --------------------------------------------------------------
-# Pipeline to align 16S nanopore reads against SILVA database,
+# Align 16S nanopore reads against SILVA database,
 # extract mapped reads, assign taxonomy, and filter Leptospirae
 # 
 # Author: LEMOBioLab  
@@ -62,8 +62,7 @@ for file in "$INPUT_DIR"/*.cl.fastq; do
 
     # Optional: Add read number / rename
     echo "Renaming reads..."
-    python3 reads_add_number.py "$OUTPUT_DIR/${base}_minimap2_leptospirae.fasta" "$OUTPUT_DIR/${base}_minimap2_leptospirae_nm.fasta"
-    perl reads_add_number.pl "$OUTPUT_DIR/${base}_minimap2_leptospirae.fasta" labels.txt > "$OUTPUT_DIR/${base}_minimap2_leptospirae_nm.fasta"
+    python3 02_reads_add_number.py "$OUTPUT_DIR/${base}_minimap2_leptospirae.fasta" "$OUTPUT_DIR/${base}_minimap2_leptospirae_nm.fasta"
 
     echo "Finished: $base"
     echo
